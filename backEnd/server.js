@@ -2,9 +2,11 @@ const express= require('express');
 const connectDB = require('./config/db');
 const app = express();
 
-const PORT=process.env.PORT || 3000;
+const PORT=process.env.PORT || 3001;
  require('./config/db');
  connectDB();
+
+ app.use(express.json());
 
  app.use(function (req, res, next) {
     //Enabling CORS
@@ -19,7 +21,9 @@ const PORT=process.env.PORT || 3000;
  //Routes
  app.use('/api/files', require('./routes/files'));
 
+ app.use('/files', require('./routes/show'));
+
 
 app.listen(PORT,()=> {
-console.log('server started at 3000');
+console.log('server started at 3001');
 })

@@ -17,8 +17,9 @@ let upload = multer({ storage, limits:{ fileSize: 1000000 * 100 }, }).single('my
 
 router.post('/', (req, res) => {
 //   upload(req, res);
+console.log('req',req);
 upload(req, res, async (err) => {
-    if (err) {
+    if (err || !req) {
       return res.status(500).send({ error: err.message });
     }
     if(!(req.file)){

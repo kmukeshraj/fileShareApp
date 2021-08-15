@@ -12,23 +12,33 @@ function connectDB() {
     // }).catch(err => {
     //     console.log(err);
     // });
-    const { MongoClient } = require("mongodb");
+
+    const url = process.env.MONGO_CONNECTION_URL;
+
+    mongoose 
+    .connect(url, {
+           useNewUrlParser: true,
+           useUnifiedTopology: true,
+           useCreateIndex: true,   })   
+    .then(() => console.log("Database connected!"))
+    .catch(err => console.log(err));
+
+    // const { MongoClient } = require("mongodb");
  
     // Replace the following with your Atlas connection string                                                                                                                                        
-    const url = process.env.MONGO_CONNECTION_URL;
-    const client = new MongoClient(url,{useUnifiedTopology: true });
-    async function run() {
-        try {
-            await client.connect();
-            console.log("Connected correctly to server");
-        } catch (err) {
-            console.log(err.stack);
-        }
-        finally {
-            await client.close();
-        }
-    }
-    run().catch(console.dir);
+    // const client = new MongoClient(url,{useUnifiedTopology: true });
+    // async function run() {
+    //     try {
+    //         await client.connect();
+    //         console.log("Connected correctly to server");
+    //     } catch (err) {
+    //         console.log(err.stack);
+    //     }
+    //     finally {
+    //         await client.close();
+    //     }
+    // }
+    // run().catch(console.dir);
 
 
 }
