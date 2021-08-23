@@ -8,6 +8,18 @@ const progressContainer = document.querySelector(".progress-container");
 const progressBar = document.querySelector(".progress-bar");
 const status = document.querySelector(".status");
 
+const sharingContainer = document.querySelector(".sharing-container");
+const copyURLBtn = document.querySelector("#copyURLBtn");
+const fileURL = document.querySelector("#fileURL");
+const emailForm = document.querySelector("#emailForm");
+
+const toast = document.querySelector(".toast");
+
+const baseURL = "http://localhost:3001";
+const uploadURL = `${baseURL}/api/files`;
+const emailURL = `${baseURL}/api/files/send`;
+
+const maxAllowedSize = 100 * 1024 * 1024; //100mb
 
 browseBtn.addEventListener("click", () => {
     fileInput.click();
